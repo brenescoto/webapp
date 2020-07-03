@@ -32,7 +32,7 @@
       enabled: true
       state: started
       
-  - name: copy web.html
+  - name: copy index.html
     copy:
-      src: web.html
+      src: index.html
       dest: /var/www/html/index.html
