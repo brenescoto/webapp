@@ -1,4 +1,6 @@
 ---
+- ec2_metadata_facts:
+  
 - name: Apache server installed
   hosts: all
 
@@ -36,3 +38,8 @@
     copy:
       src: index.html
       dest: /var/www/html/index.html
+  
+  - name: run unit test on application
+    uri:
+      url: http://{{ ansible_ec2_public_ipv4 }}
+      return_content: yes
