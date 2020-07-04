@@ -42,3 +42,8 @@
     uri:
       url: http://{{ ansible_default_ipv4.address }}
       return_content: yes
+    register: result  
+    
+   - name: print webapp page 
+     debug: 
+       var: result
