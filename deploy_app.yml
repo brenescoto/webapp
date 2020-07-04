@@ -1,5 +1,11 @@
 ---
-- ec2_metadata_facts:
+- name: grab facts for control_nodes
+  ec2_instance_info:
+  #  region: "{{ ec2_region }}"
+  #  filters:
+  #    instance-state-name: running
+  #    "tag:Workshop_ansible": "{{ec2_name_prefix}}-ansible"
+  register: ansible_node_facts
   
 - name: Apache server installed
   hosts: all
@@ -41,5 +47,5 @@
   
   - name: run unit test on application
     uri:
-      url: http://{{ ansible_ec2_public_ipv4 }}
+      url: http://{{ ansible_node_facts.public_ip_address }}
       return_content: yes
