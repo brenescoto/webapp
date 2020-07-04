@@ -1,12 +1,5 @@
 ---
-- name: grab facts for control_nodes
-  ec2_instance_info:
-  #  region: "{{ ec2_region }}"
-  #  filters:
-  #    instance-state-name: running
-  #    "tag:Workshop_ansible": "{{ec2_name_prefix}}-ansible"
-  register: ansible_node_facts
-  
+ 
 - name: Apache server installed
   hosts: all
 
@@ -44,6 +37,14 @@
     copy:
       src: index.html
       dest: /var/www/html/index.html
+      
+  - name: grab facts for control_nodes
+    ec2_instance_info:
+  #  region: "{{ ec2_region }}"
+  #  filters:
+  #    instance-state-name: running
+  #    "tag:Workshop_ansible": "{{ec2_name_prefix}}-ansible"
+    register: ansible_node_facts
   
   - name: run unit test on application
     uri:
