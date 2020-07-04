@@ -44,6 +44,6 @@
       return_content: yes
     register: result  
     
-   - name: print webapp page 
-     debug: 
-       var: result
+  - name: print webapp page 
+    debug: 
+      var: result
