@@ -1,0 +1,11 @@
+---
+
+  - name: print Instance Failure
+    debug: 
+      msg: "Provisioning instance failure! Review related logs"
+      
+  - name: print Instance Failure
+    community.general.telegram:
+      token: "{{ token }}"
+      chat_id: "{{ chatid }}"
+      msg: "Provisioning instance failure! Review related logs"
