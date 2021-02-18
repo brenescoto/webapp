@@ -1,15 +1,15 @@
 ---
  
 - name: Notify instance error
-  hosts: all
+  hosts: localhost
 
   tasks:
   - name: print Instance Failure
     debug: 
        msg: "Provisioning instance failure! Review related logs"
       
-  - name: print Instance Failure
-    community.general.telegram:
+  - name: Sent telegram notification
+    telegram:
        token: "{{ token }}"
        chat_id: "{{ chatid }}"
-       msg: "Provisioning instance failure! Review related logs"
+       msg: Provisioning instance failure! Review related logs
